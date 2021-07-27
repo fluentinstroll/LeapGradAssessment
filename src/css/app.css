@@ -23,3 +23,10 @@
   padding: 20px;
 }
 
+#app .container-data {
+  display: flex;
+}
+
+#app .call-time {
+  margin-left: 40%;
+}
