@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import Header from './Header.jsx';
+import CallPage from './components/CallPage.jsx';
 
 const App = () => {
   const [calls, setCalls] = useState([]);
@@ -24,7 +30,12 @@ const App = () => {
         {calls.map((call) => (
           <div className="container-data">
             <div>
-              <div>{call.to}</div>
+              <Router>
+              <Route exact path="/call/:callId" component={CallPage} />
+              <p>
+                <Link to={`/call/${call.id}`}>{call.to}</Link>
+              </p>
+              </Router>
               <div>tried a call on {call.from}</div>
             </div>
 
