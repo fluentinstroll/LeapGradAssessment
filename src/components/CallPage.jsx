@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import App from '../App.jsx';
 import Header from '../Header.jsx';
 
@@ -29,22 +22,43 @@ const CallPage = () => {
       .then((response) => response.json())
       .then((data) => setCall(data));
   };
+//TODO: Make this work properly, right now we get error 400
+  const archiveCall = (id) => {
+    return fetch('https://aircall-job.herokuapp.com/activities/' + id, {
+      mode: "no-cors",
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      body: {is_archived: true},
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
 
   return (
-      <div>
+    <div className="container">
       <div className="container-view">
-          <p>{call.from} ({call.id})</p>
-          <p>{call.to}</p>
-          <p>{call.call_type}</p>
-          <p>{call.via}</p>
-          {call.is_archived == false && <button>Archive</button>}
-          
+        <p>
+          {call.from} ({call.id})
+        </p>
+        <p>{call.to}</p>
+        <p>{call.call_type}</p>
+        <p>{call.via}</p>
+        {call.is_archived == false && (
+          <button onClick={() => archiveCall(call.id)}>Archive</button>
+        )}
       </div>
-      <Router forceRefresh={true}>
-          <Route exact path="/" component={App}/>
-          <Link to="/"> <p>Back</p> </Link>
-      </Router>
-      </div>
+        <Link to="/">
+          {' '}
+          <button>Back</button>{' '}
+        </Link>
+    </div>
   );
 };
 
