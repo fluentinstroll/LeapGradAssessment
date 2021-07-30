@@ -10,6 +10,11 @@ This app has all functionality besides the ability to archive calls. However, if
 2. Run ``npm install`` and ``yarn install`` to install all the dependencies
 3. Run ``npm start`` or ``yarn start`` to start the app on a local server
 
+![leapgrad1](https://user-images.githubusercontent.com/32021785/127698677-4bfc31f8-6060-4e21-88c1-5e8373fa4e32.png)
+
+![leapgrad2](https://user-images.githubusercontent.com/32021785/127698859-b200e772-394d-4d92-9521-49c315e898f7.png)
+
+# Instructions
 
 ## Summary
 
