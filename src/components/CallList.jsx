@@ -22,24 +22,31 @@ const CallList = () => {
     <div className="container">
       <div className="container-view">
         {calls.map((call) => (
-          <Link
-            to={`/call/${call.id}`}
-            style={{ textDecoration: 'none', color: 'black' }}
-          >
-            <div className="container-data">
-              <div className="caller-info">
-                    <p>{call.to ? call.to : 'Unknown Caller'}</p>
-                
+          <div>
+            {call.is_archived == false ? (
+              <Link
+                to={`/call/${call.id}`}
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <div className="container-data">
+                  <div className="caller-info">
+                    <p>{call.from ? call.from : 'Unknown Caller'}</p>
 
-                <div className="call-tried">tried a call on</div>
-                <div className="call-tried">{call.from}</div>
-              </div>
+                    <div className="call-tried">tried a call on</div>
+                    <div className="call-tried">
+                      {call.to ? call.to : 'Unknown Caller'}
+                    </div>
+                  </div>
 
-              <div className="call-time" on>
-                {call.created_at}
-              </div>
-            </div>
-          </Link>
+                  <div className="call-time" on>
+                    {call.created_at}
+                  </div>
+                </div>
+              </Link>
+            ) : (
+              ' '
+            )}
+          </div>
         ))}
       </div>
     </div>

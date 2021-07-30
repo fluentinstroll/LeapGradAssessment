@@ -25,19 +25,17 @@ const CallPage = () => {
 //TODO: Make this work properly, right now we get error 400
   const archiveCall = (id) => {
     return fetch('https://aircall-job.herokuapp.com/activities/' + id, {
-      mode: "no-cors",
+      mode: "cors",
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
-      body: {is_archived: true},
+      headers: {'Content-Type': 'application/json'},
+      body:  {is_archived: true},
     })
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error('Error: contacting https://aircall-job.herokuapp.com/activities/' + id + ', ', error);
       });
   };
 
@@ -46,13 +44,13 @@ const CallPage = () => {
       <div className="container-view">
         <div className="container-call-data">
         <h4>
-          {call.call_type} Call From: {call.from}
+          {call.call_type=='missed' ? "Missed" : "Answered"} Call from: {call.from}
         </h4>
-        <p>Call To: {call.to}</p>
-        <p>Called From {call.via}</p>
-        <p>Call Duration: {call.duration} seconds</p>
+        <p>Call to: {call.to}</p>
+        <p>Called from {call.via}</p>
+        <p>Call duration: {call.duration} seconds</p>
         {call.is_archived == false && (
-          <button style={{ 'margin-right': '20px' }}onClick={() => archiveCall(call.id)}>Archive</button>
+          <button style={{ 'margin-right': '20px' }} onClick={() => archiveCall(call.id)}>Archive</button>
         )}
         <Link to="/">
           <button>Back</button>
