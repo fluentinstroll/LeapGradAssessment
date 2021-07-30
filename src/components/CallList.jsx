@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import CallPage from './CallPage.jsx';
 
 const CallList = () => {
-    const [calls, setCalls] = useState([]);
+  //useState for the calls taken from the api
+  const [calls, setCalls] = useState([]);
   //useEffect to grab the api data
   React.useEffect(() => {
     fetchData();
@@ -26,21 +22,28 @@ const CallList = () => {
     <div className="container">
       <div className="container-view">
         {calls.map((call) => (
-          <div className="container-data">
-            <div>
-              
-              <p>
-                <Link to={`/call/${call.id}`}>{call.to}</Link>
-              </p>
-              <div>tried a call on {call.from}</div>
-            </div>
+          <Link
+            to={`/call/${call.id}`}
+            style={{ textDecoration: 'none', color: 'black' }}
+          >
+            <div className="container-data">
+              <div className="caller-info">
+                    <p>{call.to ? call.to : 'Unknown Caller'}</p>
+                
 
-            <div className="call-time">{call.created_at}</div>
-          </div>
+                <div className="call-tried">tried a call on</div>
+                <div className="call-tried">{call.from}</div>
+              </div>
+
+              <div className="call-time" on>
+                {call.created_at}
+              </div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
-    );
+  );
 };
 
 export default CallList;

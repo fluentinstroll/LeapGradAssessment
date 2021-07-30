@@ -44,20 +44,22 @@ const CallPage = () => {
   return (
     <div className="container">
       <div className="container-view">
-        <p>
-          {call.from} ({call.id})
-        </p>
-        <p>{call.to}</p>
-        <p>{call.call_type}</p>
-        <p>{call.via}</p>
+        <div className="container-call-data">
+        <h4>
+          {call.call_type} Call From: {call.from}
+        </h4>
+        <p>Call To: {call.to}</p>
+        <p>Called From {call.via}</p>
+        <p>Call Duration: {call.duration} seconds</p>
         {call.is_archived == false && (
-          <button onClick={() => archiveCall(call.id)}>Archive</button>
+          <button style={{ 'margin-right': '20px' }}onClick={() => archiveCall(call.id)}>Archive</button>
         )}
-      </div>
         <Link to="/">
-          {' '}
-          <button>Back</button>{' '}
+          <button>Back</button>
         </Link>
+        </div>
+      </div>
+        
     </div>
   );
 };
