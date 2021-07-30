@@ -25,9 +25,9 @@ const CallPage = () => {
 //TODO: Make this work properly, right now we get error 400
   const archiveCall = (id) => {
     return fetch('https://aircall-job.herokuapp.com/activities/' + id, {
-      mode: "cors",
+      mode: "no-cors",
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json; charset=utf-8' },
       body:  {is_archived: true},
     })
       .then((response) => response.json())

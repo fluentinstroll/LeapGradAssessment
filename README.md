@@ -1,3 +1,16 @@
+# LeapGrad Assessment
+This is an app built for an assessment by LeapGrad. Below you can find the instructions on what to do as well as screenshots of my own app.
+
+This app was coded in about 6 hours over the course of 4 days.
+
+This app has all functionality besides the ability to archive calls. However, if one were to manually set a call as archived, the app will not display the call.
+
+## To Use
+1. Clone this GitHub repository into your own folder
+2. Run ``npm install`` and ``yarn install`` to install all the dependencies
+3. Run ``npm start`` or ``yarn start`` to start the app on a local server
+
+
 ## Summary
 
 The goal of this test is to make you code a small ReactJS app. We have prepared a skeleton app for you, but please change whatever you want (CSS files, HTML structure, JS structure...).
